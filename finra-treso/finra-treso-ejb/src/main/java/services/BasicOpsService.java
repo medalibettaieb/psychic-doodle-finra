@@ -1,8 +1,11 @@
 package services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entities.PermissionApp;
 import entities.RoleApp;
@@ -65,6 +68,14 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 	@Override
 	public PermissionApp findPermissionAppById(int id) {
 		return entityManager.find(PermissionApp.class, id);
+	}
+
+	@Override
+	public List<UserRoleDetail> findRolesByUser(int id) {
+		String jpql = "SELECT r FROM  UserRoleDetail r WHERE r.user.id=:param";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", id);
+		return query.getResultList();
 	}
 
 }

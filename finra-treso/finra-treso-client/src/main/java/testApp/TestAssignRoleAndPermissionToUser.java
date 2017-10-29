@@ -24,9 +24,15 @@ public class TestAssignRoleAndPermissionToUser {
 		RoleApp roleApp3 = (RoleApp) basicOpsServiceRemote.findRoleById(3);
 
 		PermissionApp permissionApp = new PermissionApp("ecron9");
-		basicOpsServiceRemote.saveOrUpdateOnject(permissionApp);
-
+		PermissionApp permissionApp2= new PermissionApp("ecron10");
+		PermissionApp permissionApp3= new PermissionApp("ecron11");
 		basicOpsServiceRemote.assignRoleToUser(student, roleApp, permissionApp, false);
+	
+		basicOpsServiceRemote.assignRoleToUser(student, roleApp2, permissionApp2, false);
+	
+		basicOpsServiceRemote.assignRoleToUser(student, roleApp3, permissionApp3, false);
+		
+		basicOpsServiceRemote.assignRoleToUser(student, roleApp, permissionApp2, false);
 	}
 
 }

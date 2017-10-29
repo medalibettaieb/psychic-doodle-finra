@@ -63,5 +63,6 @@ public class AppUtilities {
 		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp3);
 		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp4);
 
+
 	}
 }
