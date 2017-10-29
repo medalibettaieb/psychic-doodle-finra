@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -16,18 +18,22 @@ import javax.persistence.OneToMany;
 public class RoleApp implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 
 	@OneToMany(mappedBy = "roleApp")
 	private List<UserRoleDetail> userRoleDetails;
-	
-	@OneToMany(mappedBy="roleApp")
-	private List<RolePermissionDetail> rolePermissionDetails;
+
 	private static final long serialVersionUID = 1L;
 
 	public RoleApp() {
 		super();
+	}
+
+	public RoleApp(String name) {
+		super();
+		this.name = name;
 	}
 
 	public int getId() {
@@ -54,17 +60,9 @@ public class RoleApp implements Serializable {
 		this.userRoleDetails = userRoleDetails;
 	}
 
-	public List<RolePermissionDetail> getRolePermissionDetails() {
-		return rolePermissionDetails;
-	}
-
-	public void setRolePermissionDetails(List<RolePermissionDetail> rolePermissionDetails) {
-		this.rolePermissionDetails = rolePermissionDetails;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
 
 }

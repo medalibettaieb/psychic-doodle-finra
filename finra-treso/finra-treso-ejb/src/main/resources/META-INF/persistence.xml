@@ -4,13 +4,8 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="finra-treso-ejb">
 		<jta-data-source>java:jboss/datasources/DS</jta-data-source>
-		<class>entities.BookingDetail</class>
-		<class>entities.BookingDetailId</class>
-		<class>entities.Course</class>
 		<class>entities.PermissionApp</class>
 		<class>entities.RoleApp</class>
-		<class>entities.RolePermissionDetail</class>
-		<class>entities.RolePermissionDetailId</class>
 		<class>entities.Student</class>
 		<class>entities.Teacher</class>
 		<class>entities.User</class>
@@ -18,8 +13,8 @@
 		<class>entities.UserRoleDetailId</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.show_sql" value="true" />
-			  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 		</properties>
 	</persistence-unit>
 </persistence>

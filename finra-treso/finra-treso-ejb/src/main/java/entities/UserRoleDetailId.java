@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Embeddable;
 
@@ -12,8 +13,18 @@ public class UserRoleDetailId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int idUser;
 	private int idRole;
+	private int idPermission;
+	private Date dateOfAssignement;
 
 	public UserRoleDetailId() {
+	}
+
+	public UserRoleDetailId(int idUser, int idRole, int idPermission) {
+		super();
+		this.idUser = idUser;
+		this.idRole = idRole;
+		this.idPermission = idPermission;
+		this.dateOfAssignement=new Date();
 	}
 
 	public int getIdUser() {
@@ -65,5 +76,21 @@ public class UserRoleDetailId implements Serializable {
 		super();
 		this.idUser = idUser;
 		this.idRole = idRole;
+	}
+
+	public int getIdPermission() {
+		return idPermission;
+	}
+
+	public void setIdPermission(int idPermission) {
+		this.idPermission = idPermission;
+	}
+
+	public Date getDateOfAssignement() {
+		return dateOfAssignement;
+	}
+
+	public void setDateOfAssignement(Date dateOfAssignement) {
+		this.dateOfAssignement = dateOfAssignement;
 	}
 }

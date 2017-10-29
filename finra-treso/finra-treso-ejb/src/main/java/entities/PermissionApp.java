@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -16,15 +18,21 @@ import javax.persistence.OneToMany;
 public class PermissionApp implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 
 	@OneToMany(mappedBy = "permissionApp")
-	private List<RolePermissionDetail> rolePermissionDetails;
+	private List<UserRoleDetail> userRoleDetails;
 	private static final long serialVersionUID = 1L;
 
 	public PermissionApp() {
 		super();
+	}
+
+	public PermissionApp(String name) {
+		super();
+		this.name = name;
 	}
 
 	public int getId() {
@@ -43,12 +51,13 @@ public class PermissionApp implements Serializable {
 		this.name = name;
 	}
 
-	public List<RolePermissionDetail> getRolePermissionDetails() {
-		return rolePermissionDetails;
+	
+	public List<UserRoleDetail> getUserRoleDetails() {
+		return userRoleDetails;
 	}
 
-	public void setRolePermissionDetails(List<RolePermissionDetail> rolePermissionDetails) {
-		this.rolePermissionDetails = rolePermissionDetails;
+	public void setUserRoleDetails(List<UserRoleDetail> userRoleDetails) {
+		this.userRoleDetails = userRoleDetails;
 	}
 
 	public static long getSerialversionuid() {

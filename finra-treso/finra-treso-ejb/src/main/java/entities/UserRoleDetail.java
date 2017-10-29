@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -19,16 +20,29 @@ public class UserRoleDetail implements Serializable {
 	private boolean status;
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idUser", referencedColumnName = "id", insertable = false, updatable = false)
 	private User user;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idRole", referencedColumnName = "id", insertable = false, updatable = false)
 	private RoleApp roleApp;
 
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "idPermission", referencedColumnName = "id", insertable = false, updatable = false)
+	private PermissionApp permissionApp;
+
 	public UserRoleDetail() {
 		super();
+	}
+
+	public UserRoleDetail(boolean status, User user, RoleApp roleApp, PermissionApp permissionApp) {
+		super();
+		this.status = status;
+		this.user = user;
+		this.roleApp = roleApp;
+		this.permissionApp = permissionApp;
+		this.userRoleDetailId = new UserRoleDetailId(user.getId(), roleApp.getId(), permissionApp.getId());
 	}
 
 	public UserRoleDetail(boolean status, User user, RoleApp roleApp) {
@@ -73,6 +87,14 @@ public class UserRoleDetail implements Serializable {
 
 	public void setRoleApp(RoleApp roleApp) {
 		this.roleApp = roleApp;
+	}
+
+	public PermissionApp getPermissionApp() {
+		return permissionApp;
+	}
+
+	public void setPermissionApp(PermissionApp permissionApp) {
+		this.permissionApp = permissionApp;
 	}
 
 }
