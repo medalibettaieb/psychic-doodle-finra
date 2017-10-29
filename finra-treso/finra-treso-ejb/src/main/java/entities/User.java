@@ -24,11 +24,6 @@ public class User implements Serializable {
 	private String login;
 	private String password;
 
-	@OneToMany(mappedBy = "teacher")
-	private List<Course> proposedCourses;
-
-	@OneToMany(mappedBy = "student")
-	private List<BookingDetail> bookingDetails;
 
 	@OneToMany(mappedBy="user")
 	private List<UserRoleDetail> userRoleDetails; 
@@ -66,21 +61,6 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public List<Course> getProposedCourses() {
-		return proposedCourses;
-	}
-
-	public void setProposedCourses(List<Course> proposedCourses) {
-		this.proposedCourses = proposedCourses;
-	}
-
-	public List<BookingDetail> getBookingDetails() {
-		return bookingDetails;
-	}
-
-	public void setBookingDetails(List<BookingDetail> bookingDetails) {
-		this.bookingDetails = bookingDetails;
-	}
 
 	public String getLogin() {
 		return login;

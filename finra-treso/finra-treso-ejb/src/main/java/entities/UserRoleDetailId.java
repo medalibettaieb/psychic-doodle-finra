@@ -12,8 +12,16 @@ public class UserRoleDetailId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int idUser;
 	private int idRole;
+	private int idPermission;
 
 	public UserRoleDetailId() {
+	}
+
+	public UserRoleDetailId(int idUser, int idRole, int idPermission) {
+		super();
+		this.idUser = idUser;
+		this.idRole = idRole;
+		this.idPermission = idPermission;
 	}
 
 	public int getIdUser() {
@@ -66,4 +74,13 @@ public class UserRoleDetailId implements Serializable {
 		this.idUser = idUser;
 		this.idRole = idRole;
 	}
+
+	public int getIdPermission() {
+		return idPermission;
+	}
+
+	public void setIdPermission(int idPermission) {
+		this.idPermission = idPermission;
+	}
+
 }

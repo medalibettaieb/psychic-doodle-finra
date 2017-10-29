@@ -1,31 +1,34 @@
 package services;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
 
-import entities.BookingDetail;
-import entities.Course;
+import entities.PermissionApp;
+import entities.RoleApp;
 import entities.User;
+import entities.UserRoleDetail;
 
 @Remote
 public interface BasicOpsServiceRemote<T> {
-	void saveOrUpdateUser(User user);
-
-	void saveOrUpdateCourse(Course course);
-
-	List<Course> findAllCourses();
-
-	BookingDetail findBookingDetailById(User user, Course course, Date date);
 
 	User findUserById(int id);
-
-	List<Course> findAllCoursesByTeacher(User teacher);
-
-	Course findCourseById(int id);
 
 	User login(String login, String password);
 
 	void saveOrUpdateOnject(T t);
+
+	void saveOrUpdateUser(User user);
+
+	void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status);
+
+	RoleApp findRoleById(int id);
+
+	PermissionApp findPermissionAppById(int id);
+
+	List<UserRoleDetail> findRolesDetailsByUser(int id);
+
+	List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp);
+
+	List<RoleApp> findRolesByUser(User user);
 }

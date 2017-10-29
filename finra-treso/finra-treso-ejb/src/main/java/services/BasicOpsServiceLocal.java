@@ -1,29 +1,34 @@
 package services;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
 
-import entities.BookingDetail;
-import entities.Course;
+import entities.PermissionApp;
+import entities.RoleApp;
 import entities.User;
+import entities.UserRoleDetail;
 
 @Local
-public interface BasicOpsServiceLocal {
-	void saveOrUpdateUser(User user);
-
-	void saveOrUpdateCourse(Course course);
-
-	List<Course> findAllCourses();
-
-	BookingDetail findBookingDetailById(User user, Course course, Date date);
+public interface BasicOpsServiceLocal<T> {
 
 	User findUserById(int id);
 
-	List<Course> findAllCoursesByTeacher(User teacher);
-
-	Course findCourseById(int id);
-
 	User login(String login, String password);
+
+	void saveOrUpdateOnject(T t);
+
+	void saveOrUpdateUser(User user);
+
+	void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status);
+
+	RoleApp findRoleById(int id);
+
+	PermissionApp findPermissionAppById(int id);
+
+	List<UserRoleDetail> findRolesDetailsByUser(int id);
+
+	List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp);
+
+	List<RoleApp> findRolesByUser(User user);
 }
