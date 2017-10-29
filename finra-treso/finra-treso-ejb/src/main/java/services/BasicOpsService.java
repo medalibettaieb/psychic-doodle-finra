@@ -55,6 +55,8 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 
 	@Override
 	public void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status) {
+	
+		
 		UserRoleDetail userRoleDetail = new UserRoleDetail(status, entityManager.merge(user),
 				entityManager.merge(roleApp), entityManager.merge(permissionApp));
 		entityManager.merge(userRoleDetail);
@@ -71,10 +73,27 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 	}
 
 	@Override
-	public List<UserRoleDetail> findRolesByUser(int id) {
-		String jpql = "SELECT r FROM  UserRoleDetail r WHERE r.user.id=:param";
+	public List<UserRoleDetail> findRolesDetailsByUser(int id) {
+		String jpql = "SELECT DISTINCT r FROM  UserRoleDetail r WHERE r.user.id=:param";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("param", id);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp) {
+		String jpql = "SELECT DISTINCT p FROM  PermissionApp p INNER JOIN p.userRoleDetails pds WHERE pds.user=:param1 AND pds.roleApp=:param2";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param1", user);
+		query.setParameter("param2", roleApp);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<RoleApp> findRolesByUser(User user) {
+		String jpql = "SELECT DISTINCT  p FROM  RoleApp p INNER JOIN p.userRoleDetails pds WHERE pds.user=:param ";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("param", entityManager.merge(user));
 		return query.getResultList();
 	}
 

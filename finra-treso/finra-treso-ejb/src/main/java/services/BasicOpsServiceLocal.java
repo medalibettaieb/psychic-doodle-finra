@@ -26,5 +26,9 @@ public interface BasicOpsServiceLocal<T> {
 
 	PermissionApp findPermissionAppById(int id);
 
-	List<UserRoleDetail> findRolesByUser(int id);
+	List<UserRoleDetail> findRolesDetailsByUser(int id);
+
+	List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp);
+
+	List<RoleApp> findRolesByUser(User user);
 }

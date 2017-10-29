@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Embeddable;
 
@@ -14,7 +13,6 @@ public class UserRoleDetailId implements Serializable {
 	private int idUser;
 	private int idRole;
 	private int idPermission;
-	private Date dateOfAssignement;
 
 	public UserRoleDetailId() {
 	}
@@ -24,7 +22,6 @@ public class UserRoleDetailId implements Serializable {
 		this.idUser = idUser;
 		this.idRole = idRole;
 		this.idPermission = idPermission;
-		this.dateOfAssignement=new Date();
 	}
 
 	public int getIdUser() {
@@ -86,11 +83,4 @@ public class UserRoleDetailId implements Serializable {
 		this.idPermission = idPermission;
 	}
 
-	public Date getDateOfAssignement() {
-		return dateOfAssignement;
-	}
-
-	public void setDateOfAssignement(Date dateOfAssignement) {
-		this.dateOfAssignement = dateOfAssignement;
-	}
 }

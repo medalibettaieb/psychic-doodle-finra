@@ -14,7 +14,8 @@ import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
-import entities.UserRoleDetail;
+import entities.PermissionApp;
+import entities.RoleApp;
 import services.BasicOpsServiceLocal;
 
 @ManagedBean
@@ -28,17 +29,22 @@ public class MenuView {
 
 	@PostConstruct
 	public void init() {
-		List<UserRoleDetail> userRoleDetails = basicOpsServiceLocal.findRolesByUser(identity.getUser().getId());
+		List<RoleApp> roleApps = basicOpsServiceLocal.findRolesByUser(identity.getUser());
 		model = new DefaultMenuModel();
 
-		for (UserRoleDetail ur : userRoleDetails) {
-			DefaultSubMenu firstSubmenu = new DefaultSubMenu(ur.getRoleApp().getName());
+		for (RoleApp r : roleApps) {
+			DefaultSubMenu firstSubmenu = new DefaultSubMenu(r.getName());
+			List<PermissionApp> permissionApps = basicOpsServiceLocal.findAllPermissionByUserAndRole(identity.getUser(),
+					r);
 
-			DefaultMenuItem item = new DefaultMenuItem(ur.getPermissionApp().getName());
-			item.setUrl("http://www.primefaces.org");
-			item.setIcon("ui-icon-home");
-			firstSubmenu.addElement(item);
+			for (PermissionApp p : permissionApps) {
+				DefaultMenuItem item = new DefaultMenuItem(p.getName());
+				item.setUrl("../a.jsf");
+				item.setIcon("ui-icon-home");
+				firstSubmenu.addElement(item);
+			
 
+			}
 			model.addElement(firstSubmenu);
 		}
 

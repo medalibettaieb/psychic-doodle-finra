@@ -17,7 +17,7 @@ import mBeans.Identity;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/pages")
+@WebFilter("/pages/*")
 public class LoginFilter implements Filter {
 
 	/**
