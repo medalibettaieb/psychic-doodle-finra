@@ -7,18 +7,18 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: UserRoleDetail
  *
  */
 @Entity
-
+@Table(name = "t_detail")
 public class UserRoleDetail implements Serializable {
 	@EmbeddedId
 	private UserRoleDetailId userRoleDetailId;
 	private boolean status;
-	private static final long serialVersionUID = 1L;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idUser", referencedColumnName = "id", insertable = false, updatable = false)
@@ -67,10 +67,6 @@ public class UserRoleDetail implements Serializable {
 
 	public void setUserRoleDetailId(UserRoleDetailId userRoleDetailId) {
 		this.userRoleDetailId = userRoleDetailId;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public User getUser() {

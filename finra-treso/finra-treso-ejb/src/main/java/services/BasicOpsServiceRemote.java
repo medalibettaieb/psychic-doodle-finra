@@ -31,4 +31,6 @@ public interface BasicOpsServiceRemote<T> {
 	List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp);
 
 	List<RoleApp> findRolesByUser(User user);
+
+	List<User> findAllUsers();
 }

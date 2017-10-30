@@ -9,7 +9,6 @@ import javax.ejb.Startup;
 import entities.PermissionApp;
 import entities.RoleApp;
 import entities.Student;
-import entities.Teacher;
 import services.BasicOpsServiceLocal;
 
 /**
@@ -17,7 +16,7 @@ import services.BasicOpsServiceLocal;
  */
 @Singleton
 @LocalBean
-@Startup
+
 public class AppUtilities {
 	@EJB
 	private BasicOpsServiceLocal basicOpsServiceLocal;
@@ -34,9 +33,6 @@ public class AppUtilities {
 		Student student2 = new Student("hamma", "h", "h", "124MT");
 		Student student3 = new Student("olfa", "o", "o", "178FT");
 
-		Teacher teacher = new Teacher("sawsen", "s", "s", 5);
-		Teacher teacher2 = new Teacher("amal", "a", "a", 1);
-
 		RoleApp roleApp = new RoleApp("financier");
 		RoleApp roleApp2 = new RoleApp("anlyste");
 		RoleApp roleApp3 = new RoleApp("reporter");
@@ -50,8 +46,6 @@ public class AppUtilities {
 		basicOpsServiceLocal.saveOrUpdateUser(student);
 		basicOpsServiceLocal.saveOrUpdateUser(student2);
 		basicOpsServiceLocal.saveOrUpdateUser(student3);
-		basicOpsServiceLocal.saveOrUpdateUser(teacher);
-		basicOpsServiceLocal.saveOrUpdateUser(teacher2);
 
 		basicOpsServiceLocal.saveOrUpdateOnject(roleApp);
 		basicOpsServiceLocal.saveOrUpdateOnject(roleApp2);
@@ -62,7 +56,6 @@ public class AppUtilities {
 		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp2);
 		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp3);
 		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp4);
-
 
 	}
 }

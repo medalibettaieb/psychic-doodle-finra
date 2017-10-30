@@ -8,24 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: RoleApp
  *
  */
 @Entity
-
+@Table(name="t_role")
 public class RoleApp implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
 
 	@OneToMany(mappedBy = "roleApp")
 	private List<UserRoleDetail> userRoleDetails;
-
-	private static final long serialVersionUID = 1L;
 
 	public RoleApp() {
 		super();
@@ -58,11 +57,6 @@ public class RoleApp implements Serializable {
 
 	public void setUserRoleDetails(List<UserRoleDetail> userRoleDetails) {
 		this.userRoleDetails = userRoleDetails;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

@@ -8,23 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: PermissionApp
  *
  */
 @Entity
-
+@Table(name="t_perm")
 public class PermissionApp implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name;
 
 	@OneToMany(mappedBy = "permissionApp")
 	private List<UserRoleDetail> userRoleDetails;
-	private static final long serialVersionUID = 1L;
 
 	public PermissionApp() {
 		super();
@@ -51,17 +51,12 @@ public class PermissionApp implements Serializable {
 		this.name = name;
 	}
 
-	
 	public List<UserRoleDetail> getUserRoleDetails() {
 		return userRoleDetails;
 	}
 
 	public void setUserRoleDetails(List<UserRoleDetail> userRoleDetails) {
 		this.userRoleDetails = userRoleDetails;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

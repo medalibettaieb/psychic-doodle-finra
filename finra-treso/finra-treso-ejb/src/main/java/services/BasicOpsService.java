@@ -33,7 +33,9 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 
 	@Override
 	public User findUserById(int id) {
-		return entityManager.find(User.class, id);
+		Query query = entityManager.createNativeQuery("SELECT * FROM  finradb.t_user WHERE id= :p");
+		query.setParameter("p", id);
+		return (User) query.getSingleResult();
 	}
 
 	@Override
@@ -55,8 +57,7 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 
 	@Override
 	public void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status) {
-	
-		
+
 		UserRoleDetail userRoleDetail = new UserRoleDetail(status, entityManager.merge(user),
 				entityManager.merge(roleApp), entityManager.merge(permissionApp));
 		entityManager.merge(userRoleDetail);
@@ -97,4 +98,9 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 		return query.getResultList();
 	}
 
+	@Override
+	public List<User> findAllUsers() {
+		Query query = entityManager.createNativeQuery("SELECT * FROM  finradb.t_user  ");
+		return query.getResultList();
+	}
 }

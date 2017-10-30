@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="menuForm">
+
+		<h:panelGroup styleClass="menuSearch">
+
+			<p:inputText id="quickSearchInput"
+				placeholder="#{bundle['QuickSearch_label']}"
+				title="#{bundle['QuickSearch_label']}" />
+			<p:commandButton id="quickSearchButton" icon="ui-icon-search"
+				title="#{bundle['ButtonSearch']}" update="growl quickSearchInput"
+				onstart="PF('statusDialog1').block()"
+				onsuccess="PF('statusDialog1').unblock()" />
+		</h:panelGroup>
+
+		<p:panelMenu>
+
+
+			<p:submenu id="globalMenuItem"
+				label="#{bundle['appmenu_Administration']}"
+				styleClass="administration"
+				rendered="#{request.isUserInRole('admin') or request.isUserInRole('superadmin')}">
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="partnerGroupMenu"
+					styleClass="dashboardAM"
+					value="#{bundle['appmenu_gestion_partnerGroup']}"
+					actionListener="#{partnerGroupController.goToPage}"
+					rendered="#{request.isUserInRole('superadmin')}" />
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="partnerMenu"
+					styleClass="dashboardAM"
+					value="#{bundle['appmenu_gestion_partner']}"
+					actionListener="#{partnerController.goToPage}"
+					rendered="#{request.isUserInRole('superadmin')}" />
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="roleMenu"
+					styleClass="dashboardAM" value="#{bundle['appmenu_gestion_role']}"
+					actionListener="#{roleController.goToPage}"
+					rendered="#{request.isUserInRole('superadmin')}" />
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="userMenu"
+					styleClass="dashboardAM" value="#{bundle['appmenu_gestion_user']}"
+					actionListener="#{userController.goToPage}"
+					rendered="#{request.isUserInRole('admin') or request.isUserInRole('superadmin')}" />
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="stepMenu"
+					styleClass="dashboardAM" value="#{bundle['appmenu_gestion_step']}"
+					actionListener="#{stepController.goToPage}"
+					rendered="#{request.isUserInRole('admin')}" />
+
+			</p:submenu>
+
+			<p:submenu id="SearchMenuItem" label="#{bundle['appmenu_search']}"
+				styleClass="searchSubMenu"
+				rendered="#{request.isUserInRole('admin') or request.isUserInRole('user')}">
+
+				<p:menuitem onstart="PF('statusDialog1').block()"
+					onsuccess="PF('statusDialog1').unblock()" id="companyMenu"
+					styleClass="dashboardAM"
+					value="#{bundle['appmenu_search_company']}"
+					actionListener="#{companyController.goToPage}"
+					rendered="#{request.isUserInRole('admin') or request.isUserInRole('user')}" />
+
+			</p:submenu>
+
+		</p:panelMenu>
+
+	</h:form>
+
+	<p:dialog closeOnEscape="true" modal="true" widgetVar="modDia"
+		appendToBody="true" styleClass="dialogLoading" id="dialogLoadingMenu"
+		header="Chargement en cours" draggable="false" closable="false"
+		resizable="false">
+		<center>
+			<p:graphicImage value="/images/loading.gif" style="height:20px;" />
+		</center>
+	</p:dialog>
+
+</ui:composition>

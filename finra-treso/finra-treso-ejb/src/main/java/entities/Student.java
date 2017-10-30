@@ -1,26 +1,23 @@
 package entities;
 
-import entities.User;
 import java.io.Serializable;
-import java.lang.String;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Student
  *
  */
 @Entity
-
 public class Student extends User implements Serializable {
 
-	
 	private String studentCard;
-	private static final long serialVersionUID = 1L;
 
 	public Student() {
 		super();
-	}   
-	
+	}
+
 	public Student(String name, String login, String password, String studentCard) {
 		super(name, login, password);
 		this.studentCard = studentCard;
@@ -38,5 +35,5 @@ public class Student extends User implements Serializable {
 	public void setStudentCard(String studentCard) {
 		this.studentCard = studentCard;
 	}
-   
+
 }

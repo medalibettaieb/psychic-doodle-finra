@@ -6,10 +6,6 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class UserRoleDetailId implements Serializable {
-	/**
-		 * 
-		 */
-	private static final long serialVersionUID = 1L;
 	private int idUser;
 	private int idRole;
 	private int idPermission;
@@ -38,10 +34,6 @@ public class UserRoleDetailId implements Serializable {
 
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
