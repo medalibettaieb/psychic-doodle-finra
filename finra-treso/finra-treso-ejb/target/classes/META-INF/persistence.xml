@@ -6,13 +6,15 @@
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 		<class>entities.PermissionApp</class>
 		<class>entities.RoleApp</class>
+		<class>entities.RolePermissionApp</class>
+		<class>entities.RolePermissionAppId</class>
 		<class>entities.Student</class>
 		<class>entities.User</class>
 		<class>entities.UserRoleDetail</class>
 		<class>entities.UserRoleDetailId</class>
 
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="false" />
 			
 		</properties>

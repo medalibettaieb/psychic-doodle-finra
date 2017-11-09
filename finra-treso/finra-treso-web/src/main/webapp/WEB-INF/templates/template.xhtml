@@ -1,22 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:h="http://xmlns.jcp.org/jsf/html" 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/ui/extensions" 
-	xmlns:f="http://xmlns.jcp.org/jsf/core" 
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
 
 	<title><ui:insert name="title">Default Title</ui:insert> v0.0.1</title>
 
-	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.request.contextPath}/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.request.contextPath}/css/color-blue.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.request.contextPath}/css/style.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.request.contextPath}/css/color-blue.css" />
 
-	<link rel="shortcut icon" href="#{facesContext.externalContext.request.contextPath}/images/icons/ci_flag.ico" type="image/x-icon" />
-	
-	<script src="http://maps.google.com/maps/api/js?key=AIzaSyBO9AjdZsZ0AxC2qnHBkH16SXIQSlKD5lM " type="text/javascript"></script>
+	<link rel="shortcut icon"
+		href="#{facesContext.externalContext.request.contextPath}/images/icons/ci_flag.ico"
+		type="image/x-icon" />
+
+	<script
+		src="http://maps.google.com/maps/api/js?key=AIzaSyBO9AjdZsZ0AxC2qnHBkH16SXIQSlKD5lM "
+		type="text/javascript"></script>
 
 </h:head>
 
@@ -43,11 +49,14 @@
 	<pe:blockUI widgetVar="statusDialog1">
 
 		<h:panelGrid columns="2" style="width:400px;">
-			<h:graphicImage library="img" name="ajax-loader1.gif" style="margin-right: 12px; vertical-align: middle;" />
-			<h:outputText value="#{bundle['Ajax_loader']}" style="white-space: nowrap; font-size:20px" />
+			<h:graphicImage library="img" name="ajax-loader1.gif"
+				style="margin-right: 12px; vertical-align: middle;" />
+			<h:outputText value="#{bundle['Ajax_loader']}"
+				style="white-space: nowrap; font-size:20px" />
 		</h:panelGrid>
 	</pe:blockUI>
-	<script type="text/javascript" src="#{facesContext.externalContext.request.contextPath}/js/script.js" />
+	<script type="text/javascript"
+		src="#{facesContext.externalContext.request.contextPath}/js/script.js" />
 
 
 </h:body>

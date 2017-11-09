@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,7 +17,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_user")
+@NamedQuery(name="User.findUserByName", query="select u from User u where u.name = :name")
 public class User implements Serializable {
+	public static final String FIND_BY_NAME = "User.findUserByName";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
