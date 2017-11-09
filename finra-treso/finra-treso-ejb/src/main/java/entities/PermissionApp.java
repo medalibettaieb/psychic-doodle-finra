@@ -1,13 +1,11 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,8 +21,6 @@ public class PermissionApp implements Serializable {
 	private int id;
 	private String name;
 
-	@OneToMany(mappedBy = "permissionApp")
-	private List<UserRoleDetail> userRoleDetails;
 
 	public PermissionApp() {
 		super();
@@ -49,14 +45,6 @@ public class PermissionApp implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<UserRoleDetail> getUserRoleDetails() {
-		return userRoleDetails;
-	}
-
-	public void setUserRoleDetails(List<UserRoleDetail> userRoleDetails) {
-		this.userRoleDetails = userRoleDetails;
 	}
 
 }
