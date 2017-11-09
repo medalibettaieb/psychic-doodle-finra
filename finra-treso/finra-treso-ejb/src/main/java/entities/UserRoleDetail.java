@@ -14,7 +14,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "t_detail")
+@Table(name = "t_userRoleDetail")
 public class UserRoleDetail implements Serializable {
 	@EmbeddedId
 	private UserRoleDetailId userRoleDetailId;

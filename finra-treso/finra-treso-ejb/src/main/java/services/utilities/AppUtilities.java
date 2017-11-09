@@ -16,7 +16,7 @@ import services.BasicOpsServiceLocal;
  */
 @Singleton
 @LocalBean
-
+@Startup
 public class AppUtilities {
 	@EJB
 	private BasicOpsServiceLocal basicOpsServiceLocal;

@@ -15,16 +15,19 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="t_role")
+@Table(name = "t_role")
 public class RoleApp implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 
 	@OneToMany(mappedBy = "roleApp")
 	private List<UserRoleDetail> userRoleDetails;
+
+	@OneToMany(mappedBy = "roleApp")
+	private List<RolePermissionApp> rolePermissionApps;
 
 	public RoleApp() {
 		super();
@@ -57,6 +60,14 @@ public class RoleApp implements Serializable {
 
 	public void setUserRoleDetails(List<UserRoleDetail> userRoleDetails) {
 		this.userRoleDetails = userRoleDetails;
+	}
+
+	public List<RolePermissionApp> getRolePermissionApps() {
+		return rolePermissionApps;
+	}
+
+	public void setRolePermissionApps(List<RolePermissionApp> rolePermissionApps) {
+		this.rolePermissionApps = rolePermissionApps;
 	}
 
 }

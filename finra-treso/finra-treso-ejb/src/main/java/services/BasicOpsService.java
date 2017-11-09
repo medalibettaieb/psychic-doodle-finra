@@ -33,9 +33,11 @@ public class BasicOpsService implements BasicOpsServiceRemote<Object>, BasicOpsS
 
 	@Override
 	public User findUserById(int id) {
-		Query query = entityManager.createNativeQuery("SELECT * FROM  finradb.t_user WHERE id= :p");
-		query.setParameter("p", id);
-		return (User) query.getSingleResult();
+		// Query query = entityManager.createNativeQuery("SELECT * FROM t_user WHERE id=
+		// :p");
+		// query.setParameter("p", id);
+		// return (User) query.getSingleResult();
+		return entityManager.find(User.class, id);
 	}
 
 	@Override
