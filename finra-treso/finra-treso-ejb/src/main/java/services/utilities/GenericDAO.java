@@ -54,7 +54,7 @@ public abstract class GenericDAO<T> {
 	// Using the unchecked because JPA does not have a
 	// ery.getSingleResult()<T> method
 	@SuppressWarnings("unchecked")
-	protected T findOneResult(String namedQuery, Map<String, Object> parameters) {
+	public T findOneResult(String namedQuery, Map<String, Object> parameters) {
 		T result = null;
 
 		try {

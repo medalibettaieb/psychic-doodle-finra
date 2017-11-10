@@ -1,6 +1,7 @@
 package services.utilities;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IGenericDAO<T> {
 	public void save(T entity);
@@ -12,5 +13,7 @@ public interface IGenericDAO<T> {
 	public T find(int entityID);
 
 	public List<T> findAll();
+
+	public T findOneResult(String namedQuery, Map<String, Object> parameters);
 
 }
