@@ -5,7 +5,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import entities.Student;
 import entities.User;
 import services.BasicOpsServiceLocal;
 
@@ -25,10 +24,7 @@ public class Identity {
 		if (userLoggedIn != null) {
 			user = userLoggedIn;
 			isLogged = true;
-			if (userLoggedIn instanceof Student) {
-				loggedInAsStudent = true;
-				navigateTo = "/pages/home?faces-redirect=true";
-			}
+
 		} else {
 			navigateTo = "/fail?faces-redirect=true";
 		}

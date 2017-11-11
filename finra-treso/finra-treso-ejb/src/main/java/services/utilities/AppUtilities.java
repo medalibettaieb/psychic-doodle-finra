@@ -8,8 +8,11 @@ import javax.ejb.Startup;
 
 import entities.PermissionApp;
 import entities.RoleApp;
-import entities.Student;
+import entities.User;
 import services.BasicOpsServiceLocal;
+import services.PermissionServiceLocal;
+import services.RoleServiceLocal;
+import services.UserServiceLocal;
 
 /**
  * Session Bean implementation class AppUtilities
@@ -21,6 +24,13 @@ public class AppUtilities {
 	@EJB
 	private BasicOpsServiceLocal basicOpsServiceLocal;
 
+	@EJB
+	private UserServiceLocal userServiceLocal;
+	@EJB
+	private PermissionServiceLocal permissionServiceLocal;
+	@EJB
+	private RoleServiceLocal roleServiceLocal;
+
 	/**
 	 * Default constructor.
 	 */
@@ -29,9 +39,9 @@ public class AppUtilities {
 
 	@PostConstruct
 	public void initDb() {
-		Student student = new Student("maissen", "m", "m", "123MT");
-		Student student2 = new Student("hamma", "h", "h", "124MT");
-		Student student3 = new Student("olfa", "o", "o", "178FT");
+		User user = new User("daly", "da", "da");
+		User user2 = new User("ahmed", "ah", "ah");
+		User user3 = new User("arafet", "ar", "ar");
 
 		RoleApp roleApp = new RoleApp("financier");
 		RoleApp roleApp2 = new RoleApp("anlyste");
@@ -43,19 +53,18 @@ public class AppUtilities {
 		PermissionApp permissionApp3 = new PermissionApp("ecran3");
 		PermissionApp permissionApp4 = new PermissionApp("ecran4");
 
-		basicOpsServiceLocal.saveOrUpdateUser(student);
-		basicOpsServiceLocal.saveOrUpdateUser(student2);
-		basicOpsServiceLocal.saveOrUpdateUser(student3);
+		userServiceLocal.save(user);
+		userServiceLocal.save(user2);
+		userServiceLocal.save(user3);
 
-		basicOpsServiceLocal.saveOrUpdateOnject(roleApp);
-		basicOpsServiceLocal.saveOrUpdateOnject(roleApp2);
-		basicOpsServiceLocal.saveOrUpdateOnject(roleApp3);
-		basicOpsServiceLocal.saveOrUpdateOnject(roleApp4);
+		roleServiceLocal.save(roleApp);
+		roleServiceLocal.save(roleApp2);
+		roleServiceLocal.save(roleApp3);
+		roleServiceLocal.save(roleApp4);
 
-		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp);
-		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp2);
-		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp3);
-		basicOpsServiceLocal.saveOrUpdateOnject(permissionApp4);
-
+		permissionServiceLocal.save(permissionApp);
+		permissionServiceLocal.save(permissionApp2);
+		permissionServiceLocal.save(permissionApp3);
+		permissionServiceLocal.save(permissionApp4);
 	}
 }

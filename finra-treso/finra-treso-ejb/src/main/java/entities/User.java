@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: User
@@ -17,8 +18,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_user")
-@NamedQuery(name="User.findUserByName", query="select u from User u where u.name = :name")
+@NamedQuery(name = "User.findUserByName", query = "select u from User u where u.name = :name")
 public class User implements Serializable {
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 1226029415726623271L;
+
+	/**
+	 * 
+	 */
+
 	public static final String FIND_BY_NAME = "User.findUserByName";
 
 	@Id

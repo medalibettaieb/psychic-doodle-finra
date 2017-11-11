@@ -8,7 +8,6 @@
 		<class>entities.RoleApp</class>
 		<class>entities.RolePermissionApp</class>
 		<class>entities.RolePermissionAppId</class>
-		<class>entities.Student</class>
 		<class>entities.User</class>
 		<class>entities.UserRoleDetail</class>
 		<class>entities.UserRoleDetailId</class>

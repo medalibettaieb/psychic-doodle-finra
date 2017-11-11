@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: RoleApp
@@ -17,7 +18,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_role")
 public class RoleApp implements Serializable {
-
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = -3455087871481705264L;
+	/**
+	 * 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

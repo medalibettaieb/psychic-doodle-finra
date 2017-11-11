@@ -4,13 +4,16 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import entities.RoleApp;
+import entities.User;
+import entities.UserRoleDetail;
 import services.BasicOpsServiceRemote;
 import services.DetailsRemote;
 import services.PermissionServiceRemote;
 import services.RoleServiceRemote;
 import services.UserServiceRemote;
 
-public class Snipets {
+public class TestDetails {
 
 	public static void main(String[] args) throws NamingException {
 		Context context = new InitialContext();
@@ -25,6 +28,10 @@ public class Snipets {
 		DetailsRemote detailsRemote = (DetailsRemote) context
 				.lookup("finra-treso-ear/finra-treso-ejb/Details!services.DetailsRemote");
 
+		User user = userServiceRemote.find(1);
+		RoleApp roleApp = roleServiceRemote.find(6);
+		UserRoleDetail entity = new UserRoleDetail(false, user, roleApp);
+		detailsRemote.save(entity);
 	}
 
 }

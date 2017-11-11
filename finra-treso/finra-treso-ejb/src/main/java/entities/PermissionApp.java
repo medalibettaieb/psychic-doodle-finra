@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: PermissionApp
@@ -17,6 +18,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_perm")
 public class PermissionApp implements Serializable {
+
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = -18843085626887343L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

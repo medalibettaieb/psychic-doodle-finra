@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: UserRoleDetail
@@ -16,6 +17,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_userRoleDetail")
 public class UserRoleDetail implements Serializable {
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 5538905551958919951L;
+	/**
+	 * 
+	 */
 	@EmbeddedId
 	private UserRoleDetailId userRoleDetailId;
 	private boolean status;
@@ -33,16 +42,6 @@ public class UserRoleDetail implements Serializable {
 	private PermissionApp permissionApp;
 
 	public UserRoleDetail() {
-		super();
-	}
-
-	public UserRoleDetail(boolean status, User user, RoleApp roleApp, PermissionApp permissionApp) {
-		super();
-		this.status = status;
-		this.user = user;
-		this.roleApp = roleApp;
-		this.permissionApp = permissionApp;
-		this.userRoleDetailId = new UserRoleDetailId(user.getId(), roleApp.getId(), permissionApp.getId());
 	}
 
 	public UserRoleDetail(boolean status, User user, RoleApp roleApp) {

@@ -4,9 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 @Embeddable
 public class RolePermissionAppId implements Serializable {
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 2908284603455998213L;
+	/**
+	 * 
+	 */
 	private int idRole;
 	private int idPermission;
 	private Date dateOf;

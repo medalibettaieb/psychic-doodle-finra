@@ -10,17 +10,9 @@ import entities.User;
 import entities.UserRoleDetail;
 
 @Remote
-public interface BasicOpsServiceRemote<T> {
-
-	User findUserById(int id);
+public interface BasicOpsServiceRemote {
 
 	User login(String login, String password);
-
-	void saveOrUpdateOnject(T t);
-
-	void saveOrUpdateUser(User user);
-
-	void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status);
 
 	RoleApp findRoleById(int id);
 
@@ -32,5 +24,6 @@ public interface BasicOpsServiceRemote<T> {
 
 	List<RoleApp> findRolesByUser(User user);
 
-	List<User> findAllUsers();
+	void assignRolesToUser(User user, List<RoleApp> roleApps);
+
 }

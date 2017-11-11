@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Entity implementation class for Entity: RolePermissionApp
@@ -15,6 +16,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_rolePermissionApp")
 public class RolePermissionApp implements Serializable {
+	/**
+	 * 
+	 */
+	@Transient
+	private static final long serialVersionUID = 5475629094799442638L;
+	/**
+	 * 
+	 */
 	@EmbeddedId
 	private RolePermissionAppId rolePermissionAppId;
 	private boolean status;
@@ -26,7 +35,6 @@ public class RolePermissionApp implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idPermission", referencedColumnName = "id", insertable = false, updatable = false)
 	private PermissionApp permissionApp;
-	private static final long serialVersionUID = 1L;
 
 	public RolePermissionApp() {
 		super();

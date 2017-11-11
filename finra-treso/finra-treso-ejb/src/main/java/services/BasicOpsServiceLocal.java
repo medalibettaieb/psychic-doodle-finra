@@ -10,17 +10,8 @@ import entities.User;
 import entities.UserRoleDetail;
 
 @Local
-public interface BasicOpsServiceLocal<T> {
-
-	User findUserById(int id);
-
+public interface BasicOpsServiceLocal {
 	User login(String login, String password);
-
-	void saveOrUpdateOnject(T t);
-
-	void saveOrUpdateUser(User user);
-
-	void assignRoleToUser(User user, RoleApp roleApp, PermissionApp permissionApp, boolean status);
 
 	RoleApp findRoleById(int id);
 
@@ -31,4 +22,6 @@ public interface BasicOpsServiceLocal<T> {
 	List<PermissionApp> findAllPermissionByUserAndRole(User user, RoleApp roleApp);
 
 	List<RoleApp> findRolesByUser(User user);
+
+	void assignRolesToUser(User user, List<RoleApp> roleApps);
 }
