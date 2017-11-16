@@ -1,18 +1,24 @@
 package services.utilities;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import entities.PermissionApp;
-import entities.RoleApp;
-import entities.User;
-import services.BasicOpsServiceLocal;
-import services.PermissionServiceLocal;
-import services.RoleServiceLocal;
-import services.UserServiceLocal;
+import persistence.Agent;
+import persistence.Gender;
+import persistence.Hobby;
+import persistence.Member;
+import persistence.Room;
+import persistence.User;
+import services.BasicOpsLocal;
 
 /**
  * Session Bean implementation class AppUtilities
@@ -22,14 +28,7 @@ import services.UserServiceLocal;
 @Startup
 public class AppUtilities {
 	@EJB
-	private BasicOpsServiceLocal basicOpsServiceLocal;
-
-	@EJB
-	private UserServiceLocal userServiceLocal;
-	@EJB
-	private PermissionServiceLocal permissionServiceLocal;
-	@EJB
-	private RoleServiceLocal roleServiceLocal;
+	private BasicOpsLocal basicOpsLocal;
 
 	/**
 	 * Default constructor.
@@ -38,33 +37,47 @@ public class AppUtilities {
 	}
 
 	@PostConstruct
-	public void initDb() {
-		User user = new User("daly", "da", "da");
-		User user2 = new User("ahmed", "ah", "ah");
-		User user3 = new User("arafet", "ar", "ar");
+	public void init() {
+		Map<Hobby, Integer> hobbiesValues = new HashMap<>();
+		hobbiesValues.put(Hobby.MUSIC, 9);
+		hobbiesValues.put(Hobby.SPORT, 3);
+		hobbiesValues.put(Hobby.TRAVEL, 1);
+		Member member = new Member("daly", "d", "d", Gender.MALE, hobbiesValues);
 
-		RoleApp roleApp = new RoleApp("financier");
-		RoleApp roleApp2 = new RoleApp("anlyste");
-		RoleApp roleApp3 = new RoleApp("reporter");
-		RoleApp roleApp4 = new RoleApp("dev");
+		Map<Hobby, Integer> hobbiesValues2 = new HashMap<>();
+		hobbiesValues2.put(Hobby.MUSIC, 8);
+		hobbiesValues2.put(Hobby.SPORT, 9);
+		hobbiesValues2.put(Hobby.TRAVEL, 2);
+		Member member2 = new Member("salma", "s", "s", Gender.FEMALE, hobbiesValues2);
 
-		PermissionApp permissionApp = new PermissionApp("ecran1");
-		PermissionApp permissionApp2 = new PermissionApp("ecran2");
-		PermissionApp permissionApp3 = new PermissionApp("ecran3");
-		PermissionApp permissionApp4 = new PermissionApp("ecran4");
+		Map<Hobby, Integer> hobbiesValues3 = new HashMap<>();
+		hobbiesValues3.put(Hobby.MUSIC, 5);
+		hobbiesValues3.put(Hobby.SPORT, 6);
+		hobbiesValues3.put(Hobby.TRAVEL, 9);
+		Member member3 = new Member("frere", "f", "f", Gender.MALE, hobbiesValues3);
 
-		userServiceLocal.save(user);
-		userServiceLocal.save(user2);
-		userServiceLocal.save(user3);
+		Agent agent = new Agent("samir", "sa", "sa", "PRO");
 
-		roleServiceLocal.save(roleApp);
-		roleServiceLocal.save(roleApp2);
-		roleServiceLocal.save(roleApp3);
-		roleServiceLocal.save(roleApp4);
+		List<User> members = new ArrayList<>();
+		members.add(member);
+		members.add(member2);
 
-		permissionServiceLocal.save(permissionApp);
-		permissionServiceLocal.save(permissionApp2);
-		permissionServiceLocal.save(permissionApp3);
-		permissionServiceLocal.save(permissionApp4);
+		Room room = new Room(37, new Color(0, 255, 0));
+		room.linkUsersToThisRoom(members);
+
+		Room room2 = new Room(12, new Color(0, 255, 0));
+		Room room3 = new Room(15, new Color(255, 255, 0));
+		Room room4 = new Room(68, new Color(255, 255, 255));
+		basicOpsLocal.addUser(agent);
+		basicOpsLocal.addUser(member);
+		basicOpsLocal.addUser(member2);
+		basicOpsLocal.addUser(member3);
+
+		basicOpsLocal.addRoom(room);
+		basicOpsLocal.addRoom(room2);
+		basicOpsLocal.addRoom(room3);
+		basicOpsLocal.addRoom(room4);
+
 	}
+
 }

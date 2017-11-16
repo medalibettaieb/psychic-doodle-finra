@@ -3,19 +3,19 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="finra-treso-ejb">
-		<jta-data-source>java:/PostgresDS</jta-data-source>
-		<class>entities.PermissionApp</class>
-		<class>entities.RoleApp</class>
-		<class>entities.RolePermissionApp</class>
-		<class>entities.RolePermissionAppId</class>
-		<class>entities.User</class>
-		<class>entities.UserRoleDetail</class>
-		<class>entities.UserRoleDetailId</class>
+		<jta-data-source>java:jboss/datasources/DS</jta-data-source>
+		<class>persistence.Agent</class>
+		<class>persistence.Member</class>
+		<class>persistence.Room</class>
+		<class>persistence.SubscriptionId</class>
+		<class>persistence.SubscriptionRequest</class>
+		<class>persistence.User</class>
 
 		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="false" />
-			
+
 		</properties>
 	</persistence-unit>
 </persistence>
