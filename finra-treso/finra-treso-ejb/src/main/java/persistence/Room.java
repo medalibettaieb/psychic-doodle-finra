@@ -27,7 +27,7 @@ public class Room implements Serializable {
 	 */
 	private static final long serialVersionUID = 6068987072761990560L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int number;
 	private Color color;
@@ -37,8 +37,8 @@ public class Room implements Serializable {
 
 	@OneToMany(mappedBy = "roomSubscribedIn", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<User> members;
-	
-	@OneToMany(mappedBy="room")
+
+	@OneToMany(mappedBy = "room")
 	private List<SubscriptionRequest> subscriptionRequests;
 
 	public Room() {

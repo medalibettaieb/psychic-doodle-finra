@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class User implements Serializable {
 	private static final long serialVersionUID = -558553967080513790L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String login;

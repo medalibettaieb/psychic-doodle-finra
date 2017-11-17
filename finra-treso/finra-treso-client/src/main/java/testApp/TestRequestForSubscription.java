@@ -19,9 +19,9 @@ public class TestRequestForSubscription {
 		SubscriptionServiceRemote subscriptionServiceRemote = (SubscriptionServiceRemote) context
 				.lookup("finra-treso-ear/finra-treso-ejb/SubscriptionService!services.SubscriptionServiceRemote");
 
-		User member = basicOpsRemote.findUserById(4);
+		User member = basicOpsRemote.findUserById(1);
 
-		Room room = basicOpsRemote.findRoomById(1);
+		Room room = basicOpsRemote.findRoomById(5);
 
 		subscriptionServiceRemote.requestForSubscription(member, room);
 
