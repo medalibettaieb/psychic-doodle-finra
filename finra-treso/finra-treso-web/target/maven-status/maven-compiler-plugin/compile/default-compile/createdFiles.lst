@@ -1,0 +1,4 @@
+filters\LoginFilter.class
+mBeans\Identity.class
+mBeans\MenuView.class
+mBeans\UserBean.class

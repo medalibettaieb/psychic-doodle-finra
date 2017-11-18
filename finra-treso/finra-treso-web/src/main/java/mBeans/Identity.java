@@ -13,8 +13,6 @@ import services.BasicOpsServiceLocal;
 public class Identity {
 	private User user = new User();
 	private Boolean isLogged = false;
-	private Boolean loggedInAsTeacher = false;
-	private Boolean loggedInAsStudent = false;
 	@EJB
 	private BasicOpsServiceLocal basicOpsServiceLocal;
 
@@ -26,7 +24,7 @@ public class Identity {
 			isLogged = true;
 
 		} else {
-			navigateTo = "/fail?faces-redirect=true";
+			navigateTo = "/pages/listUsers?faces-redirect=true";
 		}
 		return navigateTo;
 	}
@@ -44,28 +42,12 @@ public class Identity {
 		this.user = user;
 	}
 
-	public Boolean getLoggedInAsTeacher() {
-		return loggedInAsTeacher;
-	}
-
-	public void setLoggedInAsTeacher(Boolean loggedInAsTeacher) {
-		this.loggedInAsTeacher = loggedInAsTeacher;
-	}
-
 	public Boolean getIsLogged() {
 		return isLogged;
 	}
 
 	public void setIsLogged(Boolean isLogged) {
 		this.isLogged = isLogged;
-	}
-
-	public Boolean getLoggedInAsStudent() {
-		return loggedInAsStudent;
-	}
-
-	public void setLoggedInAsStudent(Boolean loggedInAsStudent) {
-		this.loggedInAsStudent = loggedInAsStudent;
 	}
 
 }

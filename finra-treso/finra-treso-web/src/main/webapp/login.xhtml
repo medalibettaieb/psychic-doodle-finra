@@ -5,20 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	template="/WEB-INF/templates/template.xhtml">
-	<ui:define name="title">login</ui:define>
-	<ui:define name="content">
-		<h1>login page</h1>
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="login" />
-				<h:inputText value="#{identity.user.login}" />
-				<h:outputText value="password" />
-				<h:inputSecret value="#{identity.user.password}" />
-			</h:panelGrid>
-			<h:commandButton action="#{identity.doLogin()}" value="login" />
-			<h:commandLink action="signUp" value="signUp" />
-		</h:form>
-	</ui:define>
+	<ui:define name="content">ahla </ui:define>
 
 
 </ui:composition>
